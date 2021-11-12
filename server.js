@@ -8,6 +8,9 @@ const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3000;
 
+const app = express();
+const Workout = require('./workoutModel.js')
+
 //Middleware
 app.use(logger("dev"));
 
