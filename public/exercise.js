@@ -99,7 +99,7 @@ async function handleFormSubmit(event) {
   event.preventDefault();
 
   let workoutData = {};
-
+// This is the part that informs the data I will recieve
   if (workoutType === "cardio") {
     workoutData.type = "cardio";
     workoutData.name = cardioNameInput.value.trim();
