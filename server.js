@@ -17,14 +17,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // tells the app to use the public directory for client-side html/css/js
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
   useNewUrlParser: true,
   useFindAndModify: false
 });
 
-app.use(require("./routes/api.js"));
+// Router
+app.use(require("./routes/routes.js"));
+// app.use(require("./routes/homeRoutes.js"));
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
