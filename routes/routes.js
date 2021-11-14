@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const {Workout, Exercise} = require("../models");
 
+
+
 // POST route that creates a new workout
 router.post("/api/workouts", ({ body }, res) => {
     Workout.create(body)
@@ -15,12 +17,23 @@ router.post("/api/workouts", ({ body }, res) => {
 // GET route that sorts the workouts created and grabs the last one created
 router.get("/api/workouts", (req, res) => {
     Workout.findOne({})
-    .sort({ dateCreated: -1 })
+    .populate("exercises") 
+    .sort({ day: -1 })
     .then(dbWorkout => {
       res.json(dbWorkout);
     })
     .catch(err => {
       res.status(400).json(err);
+    });
+})
+
+router.get("/api/tests", (req, res) => {
+    Exercise.find({}).
+    then(dbWorkout => {
+        res.json(dbWorkout);
+    })
+    .catch(err => {
+        res.status(400).json(err);
     });
 })
 
