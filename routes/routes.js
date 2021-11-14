@@ -17,8 +17,8 @@ router.post("/api/workouts", ({ body }, res) => {
 // GET route that sorts the workouts created and grabs the last one created
 router.get("/api/workouts", (req, res) => {
     Workout.findOne({})
-    .populate("exercises") 
     .sort({ day: -1 })
+    .populate("exercises") 
     .then(dbWorkout => {
       res.json(dbWorkout);
     })
