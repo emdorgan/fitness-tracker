@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const {Workout, Exercise} = require("../models");
+const {Workout} = require("../models");
 var path = require("path");
 
 //HTML routes
@@ -23,7 +23,7 @@ router.post("/api/workouts", ({ body }, res) => {
       });
 })
 
-// GET route that sorts the workouts created and grabs the last one created
+// GET route that aggregates the total duration and returns all workouts
 router.get("/api/workouts", (req, res) => {
    
     Workout.aggregate([
