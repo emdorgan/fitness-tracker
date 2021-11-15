@@ -28,6 +28,8 @@ function tallyExercises(exercises) {
     } else if (curr.type === "cardio") {
       acc.totalDistance = (acc.totalDistance || 0) + curr.distance;
     }
+    // Total duration wasn't getting processed on frontend, had to add this line
+    acc.totalDuration = (acc.totalDuration || 0) + curr.duration;
     return acc;
   }, {});
   return tallied;
