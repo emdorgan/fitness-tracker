@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const {Workout, Exercise} = require("../models");
+var path = require("path");
 
 
 
@@ -25,6 +26,18 @@ router.get("/api/workouts", (req, res) => {
     .catch(err => {
       res.status(400).json(err);
     });
+})
+
+//PUT route that creates a new exercise (by updating a workout in progress)
+router.put("/api/workouts/:id", (req, res) => {
+    const id = req.params.id;
+    Workout.findOneAndUpdate({_id: id}, {$push: {exercises: req.body}} )
+    .then(dbWorkout => {
+        res.json(dbWorkout);
+      })
+      .catch(err => {
+        res.status(400).json(err);
+      });
 })
 
 module.exports = router;
