@@ -6,19 +6,7 @@ This is a fitness tracker
 
 ## To-Do list
 
-* server-side of /api/workouts POST request (makes new workout)
-* server-side of /api/workouts GET request (gets the last workout)
-* server-side of /api/workouts/:id PUT request (adds exercise to a workout)
 * server-side of /api/workouts/range GET request (gets ???)
-
-
-## Model of database
-
-Workout has many excercises
-
-Workout
-
-- Excercise
 
 
 ## Getting Started
